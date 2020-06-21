@@ -46,6 +46,15 @@
         "aws:cdk:path": "SampleProjectElastiCacheStack-local/RedisClusterPrivateSubnetGroup"
       }
     },
+    "SampleProjectElastiCachetoxMatters8A6D9B1F": {
+      "Type": "AWS::SNS::Topic",
+      "Properties": {
+        "DisplayName": "Sample Project ElastiCache local SNS Topic"
+      },
+      "Metadata": {
+        "aws:cdk:path": "SampleProjectElastiCacheStack-local/SampleProject-ElastiCache-to-xMatters/Resource"
+      }
+    },
     "RedisReplicaGroup": {
       "Type": "AWS::ElastiCache::ReplicationGroup",
       "Properties": {

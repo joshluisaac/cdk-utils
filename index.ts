@@ -3,6 +3,7 @@ import cdk = require('@aws-cdk/core');
 import {ElastiCacheStackRequirement} from "./elasticache/elastiCacheStackRequirement";
 import {ElastiCacheStack} from "./elasticache/elastiCacheStack";
 import parameters from "./parameters.json";
+import { s3Stack } from './s3/s3Stack';
 
 const requirement = new ElastiCacheStackRequirement();
 requirement.setEnvironment(process.env.ENV);
@@ -30,11 +31,11 @@ let xMattersUrl: string = "";
         xMattersUrl = xMattersUrlParam.Value;
     }
     const app = new cdk.App();
-    const stack = new ElastiCacheStack(app, environment, authToken, xMattersUrl, {
-        env: {
+    const stackProps = {env: {
             region: "ap-southeast-2",
-        }
-    });
+        }};
+    new ElastiCacheStack(app, environment, authToken, xMattersUrl, stackProps);
+    new s3Stack(app,environment,stackProps);
     app.synth();
 })().catch(e => console.log(e));
 

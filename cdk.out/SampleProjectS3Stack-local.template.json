@@ -1,0 +1,15 @@
+{
+  "Resources": {
+    "SampleBucket7F6F8160": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "avant-systems-test-bucket"
+      },
+      "UpdateReplacePolicy": "Retain",
+      "DeletionPolicy": "Retain",
+      "Metadata": {
+        "aws:cdk:path": "SampleProjectS3Stack-local/SampleBucket/Resource"
+      }
+    }
+  }
+}

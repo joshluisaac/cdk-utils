@@ -70,6 +70,22 @@
               }
             }
           },
+          "SampleProject-ElastiCache-to-xMatters": {
+            "id": "SampleProject-ElastiCache-to-xMatters",
+            "path": "SampleProjectElastiCacheStack-local/SampleProject-ElastiCache-to-xMatters",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "SampleProjectElastiCacheStack-local/SampleProject-ElastiCache-to-xMatters/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::SNS::Topic",
+                  "aws:cdk:cloudformation:props": {
+                    "displayName": "Sample Project ElastiCache local SNS Topic"
+                  }
+                }
+              }
+            }
+          },
           "RedisReplicaGroup": {
             "id": "RedisReplicaGroup",
             "path": "SampleProjectElastiCacheStack-local/RedisReplicaGroup",
@@ -101,6 +117,32 @@
           "RedisEndpoint": {
             "id": "RedisEndpoint",
             "path": "SampleProjectElastiCacheStack-local/RedisEndpoint"
+          }
+        }
+      },
+      "SampleProjectS3Stack-local": {
+        "id": "SampleProjectS3Stack-local",
+        "path": "SampleProjectS3Stack-local",
+        "children": {
+          "SampleBucket": {
+            "id": "SampleBucket",
+            "path": "SampleProjectS3Stack-local/SampleBucket",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "SampleProjectS3Stack-local/SampleBucket/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "bucketName": "avant-systems-test-bucket"
+                  }
+                }
+              },
+              "Notifications": {
+                "id": "Notifications",
+                "path": "SampleProjectS3Stack-local/SampleBucket/Notifications"
+              }
+            }
           }
         }
       }

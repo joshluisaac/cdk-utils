@@ -11,7 +11,6 @@ export class ElastiCacheStack extends cdk.Stack {
         const env: string = environment;
         (async () => {
             const environment:any = process.env.ENV;
-            // create Security Groups for this ElastiCache cluster
             let mySecurityGroup = new ec2.SecurityGroup(this, 'SampleProjectElastiCacheSecurityGroup', {
                 description: 'Allow access to Sample Project ElastiCache cluster',
                 vpc: ec2.Vpc.fromVpcAttributes(this, parameters.environments[env].vpcName, {
@@ -32,9 +31,9 @@ export class ElastiCacheStack extends cdk.Stack {
                 }
             );
             // create SNS topic
-            // const xMattersTopic = new sns.Topic(this, 'SampleProject-ElastiCache-to-xMatters', {
-            //     displayName: `Sample Project ElastiCache ${environment} SNS Topic`
-            // });
+            const xMattersSNSTopic = new sns.Topic(this, 'SampleProject-ElastiCache-to-xMatters', {
+                displayName: `Sample Project ElastiCache ${environment} SNS Topic`
+            });
             // add xMatters subscription with SNS filter
             // because we only want to be notified about the serious events
             // xMattersTopic.addSubscription(new subs.UrlSubscription(xMattersUrl, {
