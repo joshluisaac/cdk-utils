@@ -6,7 +6,8 @@ export class s3Stack extends Stack {
 
     constructor(scope:App, environmentId:string, props?: StackProps) {
         super(scope,`SampleProjectS3Stack-${environmentId}`,props);
-        const bucket = new Bucket(this, "SampleBucket", {bucketName:"avant-systems-test-bucket"});
+        const bucket = new Bucket(this, "SampleBucket", {bucketName:"avant-systems-test-bucket", websiteIndexDocument:"index.html", websiteErrorDocument:"index.html"});
+
     }
 
 }
