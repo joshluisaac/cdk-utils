@@ -1,0 +1,88 @@
+{
+  "version": "5.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "SampleProjectElastiCacheStack-local": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/ap-southeast-2",
+      "properties": {
+        "templateFile": "SampleProjectElastiCacheStack-local.template.json"
+      },
+      "metadata": {
+        "/SampleProjectElastiCacheStack-local/SampleProjectElastiCacheSecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SampleProjectElastiCacheSecurityGroup6B825ACD",
+            "trace": [
+              "new SecurityGroup (/Users/me802167/selfrepo/platform-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.js:174:30)",
+              "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:24:35",
+              "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:33:19",
+              "processTicksAndRejections (internal/process/task_queues.js:94:5)"
+            ]
+          }
+        ],
+        "/SampleProjectElastiCacheStack-local/RedisClusterPrivateSubnetGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RedisClusterPrivateSubnetGroup",
+            "trace": [
+              "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:34:38",
+              "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:33:19",
+              "processTicksAndRejections (internal/process/task_queues.js:94:5)"
+            ]
+          }
+        ],
+        "/SampleProjectElastiCacheStack-local/RedisReplicaGroup": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RedisReplicaGroup",
+            "trace": [
+              "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:58:38",
+              "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:33:19",
+              "processTicksAndRejections (internal/process/task_queues.js:94:5)"
+            ]
+          }
+        ],
+        "/SampleProjectElastiCacheStack-local/RedisEndpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RedisEndpoint",
+            "trace": [
+              "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:75:13",
+              "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:33:19",
+              "processTicksAndRejections (internal/process/task_queues.js:94:5)"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "runtime": {
+    "libraries": {
+      "@aws-cdk/core": "1.46.0",
+      "@aws-cdk/cx-api": "1.46.0",
+      "@aws-cdk/cloud-assembly-schema": "1.46.0",
+      "@aws-cdk/cdk-assets-schema": "1.46.0",
+      "@aws-cdk/aws-elasticache": "1.46.0",
+      "@aws-cdk/aws-ec2": "1.46.0",
+      "@aws-cdk/aws-iam": "1.46.0",
+      "@aws-cdk/region-info": "1.46.0",
+      "@aws-cdk/aws-ssm": "1.46.0",
+      "@aws-cdk/aws-logs": "1.46.0",
+      "@aws-cdk/aws-cloudwatch": "1.46.0",
+      "@aws-cdk/aws-s3": "1.46.0",
+      "@aws-cdk/aws-events": "1.46.0",
+      "@aws-cdk/aws-kms": "1.46.0",
+      "jsii-runtime": "node.js/v12.14.1"
+    }
+  }
+}

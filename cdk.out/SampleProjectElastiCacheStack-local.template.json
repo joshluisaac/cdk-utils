@@ -1,0 +1,91 @@
+{
+  "Resources": {
+    "SampleProjectElastiCacheSecurityGroup6B825ACD": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Allow access to Sample Project ElastiCache cluster",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow access to Sample Project ElastiCache from any ipv4 ip",
+            "FromPort": 6379,
+            "IpProtocol": "tcp",
+            "ToPort": 6379
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow access to Sample Project ElastiCache from any ipv4 ip",
+            "FromPort": 6380,
+            "IpProtocol": "tcp",
+            "ToPort": 6380
+          }
+        ],
+        "VpcId": "vpc-dc2a14bb"
+      },
+      "Metadata": {
+        "aws:cdk:path": "SampleProjectElastiCacheStack-local/SampleProjectElastiCacheSecurityGroup/Resource"
+      }
+    },
+    "RedisClusterPrivateSubnetGroup": {
+      "Type": "AWS::ElastiCache::SubnetGroup",
+      "Properties": {
+        "Description": "Private Subnet for ElastiCache cluster",
+        "SubnetIds": [
+          "subnet-08504341"
+        ],
+        "CacheSubnetGroupName": "private-subnet-elasticache-local"
+      },
+      "Metadata": {
+        "aws:cdk:path": "SampleProjectElastiCacheStack-local/RedisClusterPrivateSubnetGroup"
+      }
+    },
+    "RedisReplicaGroup": {
+      "Type": "AWS::ElastiCache::ReplicationGroup",
+      "Properties": {
+        "ReplicationGroupDescription": "Sample Project Redis Cluster local",
+        "AuthToken": "e19d5cd5af0378da05f63f891c7467af",
+        "AutomaticFailoverEnabled": true,
+        "AutoMinorVersionUpgrade": true,
+        "CacheNodeType": "cache.t2.micro",
+        "CacheSubnetGroupName": "private-subnet-elasticache-local",
+        "Engine": "redis",
+        "NumNodeGroups": 1,
+        "Port": 6379,
+        "ReplicasPerNodeGroup": 1,
+        "SecurityGroupIds": [
+          {
+            "Fn::GetAtt": [
+              "SampleProjectElastiCacheSecurityGroup6B825ACD",
+              "GroupId"
+            ]
+          }
+        ],
+        "TransitEncryptionEnabled": true
+      },
+      "DependsOn": [
+        "RedisClusterPrivateSubnetGroup"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "SampleProjectElastiCacheStack-local/RedisReplicaGroup"
+      }
+    }
+  },
+  "Outputs": {
+    "RedisEndpoint": {
+      "Description": "The Redis cluster endpoints",
+      "Value": {
+        "Fn::GetAtt": [
+          "RedisReplicaGroup",
+          "PrimaryEndPoint.Address"
+        ]
+      }
+    }
+  }
+}

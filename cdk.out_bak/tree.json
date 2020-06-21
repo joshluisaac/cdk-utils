@@ -1,0 +1,93 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree"
+      },
+      "OpbElasticacheStack-local": {
+        "id": "OpbElasticacheStack-local",
+        "path": "OpbElasticacheStack-local",
+        "children": {
+          "vpc-dc2a14bb": {
+            "id": "vpc-dc2a14bb",
+            "path": "OpbElasticacheStack-local/vpc-dc2a14bb"
+          },
+          "OpbElastiCacheSecurityGroup": {
+            "id": "OpbElastiCacheSecurityGroup",
+            "path": "OpbElasticacheStack-local/OpbElastiCacheSecurityGroup",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "OpbElasticacheStack-local/OpbElastiCacheSecurityGroup/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Allow access to Open Banking ElasticCache cluster",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "description": "Allow all outbound traffic by default",
+                        "ipProtocol": "-1"
+                      }
+                    ],
+                    "securityGroupIngress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "ipProtocol": "tcp",
+                        "fromPort": 6379,
+                        "toPort": 6379,
+                        "description": "Allow access to Open Banking ElasticCache from any ipv4 ip"
+                      },
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "ipProtocol": "tcp",
+                        "fromPort": 6380,
+                        "toPort": 6380,
+                        "description": "Allow access to Open Banking ElasticCache from any ipv4 ip"
+                      }
+                    ],
+                    "vpcId": "vpc-dc2a14bb"
+                  }
+                }
+              }
+            }
+          },
+          "RedisClusterPrivateSubnetGroup": {
+            "id": "RedisClusterPrivateSubnetGroup",
+            "path": "OpbElasticacheStack-local/RedisClusterPrivateSubnetGroup",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::ElastiCache::SubnetGroup",
+              "aws:cdk:cloudformation:props": {
+                "description": "Private Subnet for Redis cluster",
+                "subnetIds": [
+                  "subnet-08504341"
+                ],
+                "cacheSubnetGroupName": "private-subnet-redis-local"
+              }
+            }
+          },
+          "OPB-Elasticache-to-xMatters": {
+            "id": "OPB-Elasticache-to-xMatters",
+            "path": "OpbElasticacheStack-local/OPB-Elasticache-to-xMatters",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "OpbElasticacheStack-local/OPB-Elasticache-to-xMatters/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::SNS::Topic",
+                  "aws:cdk:cloudformation:props": {
+                    "displayName": "Open Banking Elasticache local SNS Topic"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+**/node_modules
+.idea
+yarn.lock
+dist
+.project
+bin
+.DS_Store
+.vscode
+package-lock.json
+*.ts.orig
+.gradle
+PRODUCT_DATA_*.json
