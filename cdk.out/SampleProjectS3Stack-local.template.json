@@ -3,7 +3,11 @@
     "SampleBucket7F6F8160": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
-        "BucketName": "avant-systems-test-bucket"
+        "BucketName": "avant-systems-test-bucket",
+        "WebsiteConfiguration": {
+          "ErrorDocument": "index.html",
+          "IndexDocument": "index.html"
+        }
       },
       "UpdateReplacePolicy": "Retain",
       "DeletionPolicy": "Retain",

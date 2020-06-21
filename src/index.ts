@@ -13,9 +13,6 @@ requirement.checkAllowedEnvironments();
 let authToken: string = "";
 let xMattersUrl: string = "";
 
-
-
-
 (async () => {
     const environment:any = process.env.ENV;
     const ssm = new aws.SSM({

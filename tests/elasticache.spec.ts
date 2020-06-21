@@ -1,7 +1,7 @@
 import cdk = require('@aws-cdk/core');
 import '@aws-cdk/assert/jest';
-import {ElastiCacheStackRequirement} from "../elasticache/elastiCacheStackRequirement";
-import {ElastiCacheStack} from "../elasticache/elastiCacheStack";
+import {ElastiCacheStackRequirement} from "../src/elasticache/elastiCacheStackRequirement";
+import {ElastiCacheStack} from "../src/elasticache/elastiCacheStack";
 
 
 describe("ElastiCache stack requirements test", () => {

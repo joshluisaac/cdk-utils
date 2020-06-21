@@ -134,7 +134,11 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
                   "aws:cdk:cloudformation:props": {
-                    "bucketName": "avant-systems-test-bucket"
+                    "bucketName": "avant-systems-test-bucket",
+                    "websiteConfiguration": {
+                      "indexDocument": "index.html",
+                      "errorDocument": "index.html"
+                    }
                   }
                 }
               },

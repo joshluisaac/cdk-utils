@@ -2,9 +2,10 @@
   "name": "productapi-platform",
   "version": "1.0.0",
   "description": "AvantSystems API AWS CDK code to setup ElastiCache cluster",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p .",
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
