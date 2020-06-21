@@ -22,7 +22,7 @@
               "new SecurityGroup (/Users/me802167/selfrepo/platform-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.js:174:30)",
               "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:24:35",
               "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
-              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:37:5",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:49:5",
               "processTicksAndRejections (internal/process/task_queues.js:94:5)"
             ]
           }
@@ -34,7 +34,7 @@
             "trace": [
               "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:34:38",
               "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
-              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:37:5",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:49:5",
               "processTicksAndRejections (internal/process/task_queues.js:94:5)"
             ]
           }
@@ -47,7 +47,7 @@
               "new Topic (/Users/me802167/selfrepo/platform-cdk/node_modules/@aws-cdk/aws-sns/lib/topic.js:16:26)",
               "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:40:38",
               "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
-              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:37:5",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:49:5",
               "processTicksAndRejections (internal/process/task_queues.js:94:5)"
             ]
           }
@@ -59,7 +59,7 @@
             "trace": [
               "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:58:38",
               "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
-              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:37:5",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:49:5",
               "processTicksAndRejections (internal/process/task_queues.js:94:5)"
             ]
           }
@@ -71,7 +71,7 @@
             "trace": [
               "/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:75:13",
               "new ElastiCacheStack (/Users/me802167/selfrepo/platform-cdk/dist/elasticache/elastiCacheStack.js:79:11)",
-              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:37:5",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:49:5",
               "processTicksAndRejections (internal/process/task_queues.js:94:5)"
             ]
           }
@@ -91,8 +91,20 @@
             "data": "SampleBucket7F6F8160",
             "trace": [
               "new Bucket (/Users/me802167/selfrepo/platform-cdk/node_modules/@aws-cdk/aws-s3/lib/bucket.js:387:26)",
-              "new s3Stack (/Users/me802167/selfrepo/platform-cdk/dist/s3/s3Stack.js:8:24)",
-              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:38:5",
+              "new s3Stack (/Users/me802167/selfrepo/platform-cdk/dist/s3/s3Stack.js:17:30)",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:50:5",
+              "processTicksAndRejections (internal/process/task_queues.js:94:5)"
+            ]
+          }
+        ],
+        "/SampleProjectS3Stack-local/SampleBucket Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SampleBucketPolicyADD21177",
+            "trace": [
+              "new BucketPolicy (/Users/me802167/selfrepo/platform-cdk/node_modules/@aws-cdk/aws-s3/lib/bucket-policy.js:22:25)",
+              "new s3Stack (/Users/me802167/selfrepo/platform-cdk/dist/s3/s3Stack.js:22:31)",
+              "/Users/me802167/selfrepo/platform-cdk/dist/index.js:50:5",
               "processTicksAndRejections (internal/process/task_queues.js:94:5)"
             ]
           }

@@ -147,6 +147,46 @@
                 "path": "SampleProjectS3Stack-local/SampleBucket/Notifications"
               }
             }
+          },
+          "SampleBucket Policy": {
+            "id": "SampleBucket Policy",
+            "path": "SampleProjectS3Stack-local/SampleBucket Policy",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "SampleProjectS3Stack-local/SampleBucket Policy/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
+                  "aws:cdk:cloudformation:props": {
+                    "bucket": {
+                      "Ref": "SampleBucket7F6F8160"
+                    },
+                    "policyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "s3:GetObject",
+                          "Condition": {
+                            "NotIpAddress": {
+                              "aws:SourceIp": [
+                                "165.225.226.0/23",
+                                "203.210.82.0/24",
+                                "3.105.1.245/32",
+                                "194.223.47.45/32"
+                              ]
+                            }
+                          },
+                          "Effect": "Deny",
+                          "Principal": "*",
+                          "Resource": "arn:aws:s3:::avant-systems-test-bucket/*",
+                          "Sid": "Stmt8882271437483"
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
