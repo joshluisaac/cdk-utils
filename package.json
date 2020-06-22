@@ -10,8 +10,8 @@
     "test": "jest",
     "cdk": "cdk",
     "prettify": "npm run prettifysrc && npm run prettifytest",
-    "prettifysrc": "./node_modules/.bin/prettier   --write 'src/**/*.{ts,js,css,json}'",
-    "prettifytest": "./node_modules/.bin/prettier  --write 'test/**/*.{ts,js,css,json}'"
+    "prettifysrc": "./node_modules/.bin/prettier   --write 'src/**/*.{ts,js,css,json,html}'",
+    "prettifytest": "./node_modules/.bin/prettier  --write 'test/**/*.{ts,js,css,json,html}'"
   },
   "author": "",
   "license": "ISC",

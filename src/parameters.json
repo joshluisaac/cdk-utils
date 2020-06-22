@@ -1,37 +1,5 @@
 {
   "environments": {
-    "experiment": {
-      "cacheNodeType": "cache.t2.micro",
-      "replicasPerNodeGroup": 1,
-      "numNodeGroups": 1,
-      "subnetIds": ["subnet-00e0b4a028c6d4c20"],
-      "vpcId": "vpc-0405d27af59a49180",
-      "vpcName": "primary-vpc-r0 (legacy)",
-      "availabilityZones": [
-        "ap-southeast-2a",
-        "ap-southeast-2b",
-        "ap-southeast-2c"
-      ],
-      "ssmKeyRedisAuthToken": "/opb-elasticache/REDIS_PASSWORD",
-      "port": 6380,
-      "ssmKeyXMattersUrl": "/opb-elasticache/XMATTERS_URL"
-    },
-    "dev": {
-      "cacheNodeType": "cache.t2.micro",
-      "replicasPerNodeGroup": 1,
-      "numNodeGroups": 1,
-      "subnetIds": ["subnet-00e0b4a028c6d4c20"],
-      "vpcId": "vpc-0405d27af59a49180",
-      "vpcName": "primary-vpc-r0 (legacy)",
-      "availabilityZones": [
-        "ap-southeast-2a",
-        "ap-southeast-2b",
-        "ap-southeast-2c"
-      ],
-      "ssmKeyRedisAuthToken": "/opb-elasticache/REDIS_PASSWORD",
-      "port": 6379,
-      "ssmKeyXMattersUrl": "/opb-elasticache/XMATTERS_URL"
-    },
     "local": {
       "cacheNodeType": "cache.t2.micro",
       "replicasPerNodeGroup": 1,
@@ -44,8 +12,24 @@
         "ap-southeast-2b",
         "ap-southeast-2c"
       ],
-      "ssmKeyRedisAuthToken": "/sampleproject/REDIS_PASSWORD",
       "port": 6379,
+      "ssmKeyRedisAuthToken": "/sampleproject/REDIS_PASSWORD",
+      "ssmKeyXMattersUrl": "/sampleproject/REDIS_PASSWORD"
+    },
+    "dev": {
+      "cacheNodeType": "cache.t2.micro",
+      "replicasPerNodeGroup": 1,
+      "numNodeGroups": 1,
+      "subnetIds": ["subnet-08504341"],
+      "vpcId": "vpc-dc2a14bb",
+      "vpcName": "vpc-dc2a14bb",
+      "availabilityZones": [
+        "ap-southeast-2a",
+        "ap-southeast-2b",
+        "ap-southeast-2c"
+      ],
+      "port": 6379,
+      "ssmKeyRedisAuthToken": "/sampleproject/REDIS_PASSWORD",
       "ssmKeyXMattersUrl": "/sampleproject/REDIS_PASSWORD"
     }
   }

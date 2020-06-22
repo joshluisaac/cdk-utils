@@ -166,16 +166,13 @@
                         {
                           "Action": "s3:GetObject",
                           "Condition": {
-                            "NotIpAddress": {
+                            "IpAddress": {
                               "aws:SourceIp": [
-                                "165.225.226.0/23",
-                                "203.210.82.0/24",
-                                "3.105.1.245/32",
-                                "194.223.47.45/32"
+                                "203.221.212.0/24"
                               ]
                             }
                           },
-                          "Effect": "Deny",
+                          "Effect": "Allow",
                           "Principal": "*",
                           "Resource": "arn:aws:s3:::avant-systems-test-bucket/*",
                           "Sid": "Stmt8882271437483"
