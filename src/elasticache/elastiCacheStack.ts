@@ -1,28 +1,28 @@
-import cdk = require("@aws-cdk/core");
-import * as elastiCache from "@aws-cdk/aws-elasticache";
-import ec2 = require("@aws-cdk/aws-ec2");
-import * as sns from "@aws-cdk/aws-sns";
+import { App, StackProps, Stack, CfnOutput } from "@aws-cdk/core";
+import { CfnSubnetGroup, CfnReplicationGroup } from "@aws-cdk/aws-elasticache";
+import { SecurityGroup, Vpc, Peer, Port } from "@aws-cdk/aws-ec2";
+import { Topic } from "@aws-cdk/aws-sns";
 import * as subs from "@aws-cdk/aws-sns-subscriptions";
 import parameters from "../parameters.json";
 
-export class ElastiCacheStack extends cdk.Stack {
+export class ElastiCacheStack extends Stack {
   constructor(
-    app: cdk.App,
+    app: App,
     environment: string,
     authToken: string,
     xMattersUrl: string,
-    props?: cdk.StackProps
+    props?: StackProps
   ) {
     super(app, `SampleProjectElastiCacheStack-${environment}`, props);
     const env: string = environment;
     (async () => {
       const environment: any = process.env.ENV;
-      let mySecurityGroup = new ec2.SecurityGroup(
+      let mySecurityGroup = new SecurityGroup(
         this,
         "SampleProjectElastiCacheSecurityGroup",
         {
           description: "Allow access to Sample Project ElastiCache cluster",
-          vpc: ec2.Vpc.fromVpcAttributes(
+          vpc: Vpc.fromVpcAttributes(
             this,
             parameters.environments[env].vpcName,
             {
@@ -34,16 +34,16 @@ export class ElastiCacheStack extends cdk.Stack {
         }
       );
       mySecurityGroup.addIngressRule(
-        ec2.Peer.anyIpv4(),
-        ec2.Port.tcp(6379),
+        Peer.anyIpv4(),
+        Port.tcp(6379),
         "Allow access to Sample Project ElastiCache from any ipv4 ip"
       );
       mySecurityGroup.addIngressRule(
-        ec2.Peer.anyIpv4(),
-        ec2.Port.tcp(6380),
+        Peer.anyIpv4(),
+        Port.tcp(6380),
         "Allow access to Sample Project ElastiCache from any ipv4 ip"
       );
-      const redisSubnetGroup = new elastiCache.CfnSubnetGroup(
+      const redisSubnetGroup = new CfnSubnetGroup(
         this,
         "RedisClusterPrivateSubnetGroup",
         {
@@ -53,7 +53,7 @@ export class ElastiCacheStack extends cdk.Stack {
         }
       );
       // create SNS topic
-      const xMattersSNSTopic = new sns.Topic(
+      const xMattersSNSTopic = new Topic(
         this,
         "SampleProject-ElastiCache-to-xMatters",
         {
@@ -76,7 +76,7 @@ export class ElastiCacheStack extends cdk.Stack {
       //     }
       // }));
 
-      const redisReplication = new elastiCache.CfnReplicationGroup(
+      const redisReplication = new CfnReplicationGroup(
         this,
         `RedisReplicaGroup`,
         {
@@ -99,7 +99,7 @@ export class ElastiCacheStack extends cdk.Stack {
       redisReplication.addDependsOn(redisSubnetGroup);
 
       // Publish the custom resource output
-      new cdk.CfnOutput(this, "RedisEndpoint", {
+      new CfnOutput(this, "RedisEndpoint", {
         description: "The Redis cluster endpoints",
         value: redisReplication.attrPrimaryEndPointAddress
       });
